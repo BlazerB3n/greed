@@ -44,8 +44,8 @@ namespace Greed.Game.Casting{
         }
         public void MoveNext(int maxX, int maxY)
         {
-            int x = (int)((position.X + velocity.X) + maxX) % maxX;
-            int y = (int) ((position.Y + velocity.Y) + maxY) % maxY;
+            int x = ((position.GetX() + velocity.GetX()) + maxX) % maxX;
+            int y = ((position.GetY() + velocity.GetY()) + maxY) % maxY;
             position = new Point(x, y);
         }
         public void SetColor(Color color)

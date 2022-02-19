@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Raylib_cs;
 
+using Greed.Game.Casting;
 using static Greed.SYSTEM_SETTINGS;
 
 namespace Greed.Game.Services
@@ -8,7 +9,7 @@ namespace Greed.Game.Services
     public class VideoServices
     {
 
-        Dictionary<int, Texture2D> Texture = new Dictionary<int, Texture2D>();
+        Dictionary<int, Texture2D> textures = new Dictionary<int, Texture2D>();
         
         List<TextureService> TextureList = null;
 
@@ -43,6 +44,78 @@ namespace Greed.Game.Services
             }
         }
         
+        /// <summary>
+        /// Draws the given actor's text on the screen.
+        /// </summary>
+        /// <param name="actor">The actor to draw.</param>
+        public void DrawSprite(Actor actor)
+        {
+            int x = actor.GetPosition().GetX();
+            int y = actor.GetPosition().GetY();
+            // int fontSize = actor.GetFontSize();
+            Casting.Color c = actor.GetColor();
+            Raylib_cs.Color color = ToRaylibColor(c);
+            Sprite sprite = (Sprite) actor;
+            
+            int id = sprite.GetTextureID();
+            
+            if (id == -1)
+            {
+                Raylib.DrawRectangleRec(sprite.GetRectangle(), color);
+                return;
+            }
+
+            else if (!textures.ContainsKey(id))
+            {
+                
+                textures.Add(id, Raylib.LoadTextureFromImage(TextureList[id].GetTexture()));
+                TextureList.RemoveAt(id);
+                // textures[id] = Raylib.LoadTextureFromImage(sprite.GetTexture());
+            }
+            Texture2D texture = textures[id];
+
+            Raylib.DrawTextureRec(texture, sprite.GetRectangle(), new System.Numerics.Vector2( x, y), color);
+            
+        }
+        
+        /// <summary>
+        /// Draws the given actor's text on the screen.
+        /// </summary>
+        /// <param name="actor">The actor to draw.</param>
+        public void DrawBanner(Actor actor)
+        {
+            
+            int x = actor.GetPosition().GetX();
+            int y = actor.GetPosition().GetY();
+
+            Banner banner = (Banner) actor;
+
+            string text = banner.GetText();
+            int fontSize = actor.GetScailer();
+
+            Casting.Color c = actor.GetColor();
+            Raylib_cs.Color color = ToRaylibColor(c);
+
+            Raylib.DrawText(text, x, y, fontSize, color);
+        }
+        /// <summary>
+        /// Draws the given list of actors on the screen.
+        /// </summary>
+        /// <param name="actors">The list of actors to draw.</param>
+        public void DrawActors(List<Actor> actors)
+        {
+            foreach (Actor actor in actors)
+            {
+                if (actor.GetID() > 0)
+                {
+                    DrawSprite(actor);
+                }
+                else 
+                {
+                    DrawBanner(actor);
+                }
+            }
+        }
         /// <summary>
         /// Copies the buffer contents to the screen. This method should be called at the end of
         /// the game's output phase.
