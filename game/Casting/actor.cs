@@ -1,92 +1,30 @@
 using System;
-using System.Collections.Generic;
+using Raylib_cs;
 using System.Numerics;
 
+using test.Game.Directing;
 
-namespace Greed.Game.Casting{
-    public class Actor{
-        private string text = "";
-        private int fontSize = 15;
-        private Color color = new Color(255, 255, 255); // white
-        private Point position = new Point(0,0);
+namespace test.Game.Casting
+{
+    public class Actor
+    {
+        /// The position of the object on the screen 
+        /// and the size of that object
+        private Rectangle HitBox = new Rectangle(posX, posY, width, height);
 
-        private Point velocity = new Point(0,0);
-        
-        private int ID;
+        /// the speed and direction the object is moving 
+        private Vector2 velocity = new Vector2(0, 0);
 
+        /// the color tint of object
+        private Color color = new Color(255, 255, 255, 255);
 
-        
-        public Actor(int ID)
-        {this.ID = ID;
-        }
-        public Color GetColor()
+        /// the type of actor
+        private ActorType actorType; 
+
+        public Actor()
         {
-            return color;
         }
-        public int GetFontSize()
-        {
-            return fontSize;
-        }
-
-        public Point GetPosition()
-        {
-            return position;
-        }
-
-        public string GetText()
-        {
-            return text;
-        }
-
-        public Point GetVelocity()
-        {
-            return velocity;
-        }
-        public void MoveNext(int maxX, int maxY)
-        {
-            int x = ((position.GetX() + velocity.GetX()) + maxX) % maxX;
-            int y = ((position.GetY() + velocity.GetY()) + maxY) % maxY;
-            position = new Point(x, y);
-        }
-        public void SetColor(Color color)
-        {
-            if (color == null)
-            {
-                throw new ArgumentException("color can't be null");
-            }
-            this.color = color;
-        }
-        
-        public void SetPosition(Point position)
-        {
-            if (position == null)
-            {
-                throw new ArgumentException("position can't be null");
-            }
-            this.position = position;
-        }
-
-        public void SetText(string text)
-        {
-            if (text == null)
-            {
-                throw new ArgumentException("text can't be null");
-            }
-            this.text = text;
-        }
-
-         public void SetVelocity(Point velocity)
-        {
-            if (velocity == null)
-            {
-                throw new ArgumentException("velocity can't be null");
-            }
-            this.velocity = velocity;
-        }
-
-
 
 
     }
-    
 }

@@ -1,8 +1,8 @@
 ﻿using System;
-using Greed.Game.Casting;
+using Raylib_cs;
+using test.Game.Directing;
 
-
-namespace Greed
+namespace test
 {
     public struct SYSTEM_SETTINGS
     {
@@ -17,15 +17,17 @@ namespace Greed
     public static string DATA_PATH = "Data/messages.txt";
     public static string TEXTURE_PATH_icons = "Data/Textures/icons_vx.png";
     public static string TEXTURE_PATH_Battler = "Data/Textures/battler_1_1.png";
-    public static Color WHITE = new Color(255, 255, 255);
+    public static string TEXTURE_PATH_BUTTONS = "Data/Textures/Button_play_x3_2.png";
+    public static Color WHITE = new Color(255, 255, 255, 255);
     public static int DEFAULT_ARTIFACTS = 40;
     }
     class Program
     {
-        
         static void Main(string[] args)
         {
+            Director director = new Director();
             
+            director.GameLoop();
         }
     }
 }

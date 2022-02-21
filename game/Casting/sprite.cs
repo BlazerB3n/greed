@@ -1,25 +1,32 @@
-using System.Collections.Generic;
 using Raylib_cs;
+using test.Game.Directing;
 
-namespace Greed.Game.Casting
+namespace test.Game.Casting
 {
-    public class Sprite: Actor
+    public class Sprite : Actor
     {
-        
-        private int score = 0;
-        private int TextureID;
-        private Rectangle frame = new Rectangle(0,0,24,24);
-        public Sprite(int TextureID)
+        /// the part of the texture image to be displayed by the sprite
+        /// posX = x on the png
+        /// posY = y on the png
+        /// width = the width of the portopn of the png to be displayed
+        /// height = the height of the portopn of the png to be displayed
+
+        private Rectangle TextureBounds = new Rectangle(posX, posY, width, height);
+
+        private TextureType textureType;
+
+        public Sprite() : base()
         {
-            this.TextureID;
         }
-        public SetRectangle()
+
+        public Rectangle GetTextureBounds()
         {
             
         }
-        public GetRectangle()
+
+        public void SetTextureBounds()
         {
-            return rectangle;
+
         }
     }
 }
