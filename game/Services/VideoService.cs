@@ -1,7 +1,7 @@
 using Raylib_cs;
-using static test.SYSTEM_SETTINGS;
+using static Greed.SYSTEM_SETTINGS;
 
-namespace test.Game.Services
+namespace Greed.Game.Services
 {
     class VideoSerivce
     {

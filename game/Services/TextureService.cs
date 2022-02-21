@@ -1,7 +1,7 @@
 using Raylib_cs;
-using test.Game.Directing;
+using Greed.Game.Directing;
 
-namespace test.Game.Services
+namespace Greed.Game.Services
 {
 
     public class TextureSerivce

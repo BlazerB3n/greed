@@ -1,7 +1,7 @@
 using Raylib_cs;
-using test.Game.Directing;
+using Greed.Game.Directing;
 
-namespace test.Game.Casting
+namespace Greed.Game.Casting
 {
     public class Sprite : Actor
     {

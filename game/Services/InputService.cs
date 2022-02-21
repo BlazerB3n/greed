@@ -1,6 +1,6 @@
 using Raylib_cs;
 
-namespace test.Game.Services
+namespace Greed.Game.Services
 {
     class InputSerivce
     {

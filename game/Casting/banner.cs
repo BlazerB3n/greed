@@ -1,6 +1,6 @@
 using Raylib_cs;
 
-namespace test.Game.Casting
+namespace Greed.Game.Casting
 {
     public class Banner : Actor
     {

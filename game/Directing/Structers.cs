@@ -1,6 +1,6 @@
 using Raylib_cs;
 
-namespace test.Game.Directing
+namespace Greed.Game.Directing
 {
     
     public enum Stages

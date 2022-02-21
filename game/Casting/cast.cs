@@ -1,7 +1,7 @@
-using test.Game.Casting;
+using Greed.Game.Casting;
 using System.Collections.Generic;
 
-namespace test.Game.Casting
+namespace Greed.Game.Casting
 {
     public class Cast
     {

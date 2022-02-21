@@ -2,9 +2,9 @@ using System;
 using System.Numerics;
 using System.Collections.Generic;
 using Raylib_cs;
-using test.Game.Services;
+using Greed.Game.Services;
 
-namespace test.Game.Directing
+namespace Greed.Game.Directing
 {
 
     public class Director
