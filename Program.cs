@@ -2,7 +2,7 @@
 using Raylib_cs;
 using Greed.Game.Directing;
 
-namespace test
+namespace Greed
 {
     public struct SYSTEM_SETTINGS
     {

@@ -21,6 +21,7 @@ namespace Greed.Game.Casting
 
         public Rectangle GetTextureBounds()
         {
+            return TextureBounds;
             
         }
 

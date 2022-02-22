@@ -4,9 +4,9 @@ using Greed.Game.Directing;
 namespace Greed.Game.Services
 {
 
-    public class TextureSerivce
+    public class TextureService
     {
-        public TextureSerivce()
+        public TextureService()
         {
 
         }

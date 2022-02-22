@@ -5,7 +5,7 @@ namespace Greed.Game.Casting
     public class Banner : Actor
     {
         private string message = "";
-
+        
         public static int FontSize = SYSTEM_SETTINGS.FONT_SIZE;
 
         public Banner() : base()
@@ -14,11 +14,14 @@ namespace Greed.Game.Casting
 
         public string GetMessage()
         {
-
+            return message;
         }
+
+        
 
         public void SetMessage()
         {
+            string Message = new Message;
 
         }
     }

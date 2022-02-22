@@ -24,7 +24,7 @@ namespace Greed.Game.Casting
         public Actor()
         {
         }
-
+        
 
     }
 }

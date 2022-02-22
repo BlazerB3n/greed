@@ -5,7 +5,7 @@ namespace Greed.Game.Directing
     
     public enum Stages
     {
-        TITEL,
+        TITLE,
         GAME,
         END
     }
@@ -34,8 +34,8 @@ namespace Greed.Game.Directing
 
     public struct TextureRegistry
     {
-        public static Texture2D BOTTON;
-        public static int BOTTON_TextureID;
+        public static Texture2D BUTTON;
+        public static int BUTTON_TextureID;
         public static string TEXTURE_PATH_BUTTONS = "Data/Textures/Button_play.png";
 
 

@@ -2,9 +2,9 @@ using Raylib_cs;
 
 namespace Greed.Game.Services
 {
-    class InputSerivce
+    class InputService
     {
-        public InputSerivce()
+        public InputService()
         {
 
         }

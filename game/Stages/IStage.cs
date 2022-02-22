@@ -1,14 +1,17 @@
-using test.Game.Directing;
+using Greed.Game.Directing;
+using Greed.Game.Casting;
+using System.Collections.Generic;
 
-namespace test.Game.Services
+namespace Greed.Game.Services
+
 {
     public interface IStage
     {
         void GetInputs();
 
-        void DoUpdates();
+        Stages DoUpdates();
 
-        Stages DoOutputs();
+        List<Actor> DoOutputs();
 
 
     }
