@@ -18,6 +18,7 @@ namespace Greed.Game.Casting
 
         public Sprite() : base()
         {
+            
         }
 
         public Rectangle GetTextureBounds()
