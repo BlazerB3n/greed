@@ -21,6 +21,7 @@ namespace Greed.Game.Casting
 
         /// the type of actor
         private ActorType actorType; 
+        private TextureType textureType;
 
         public Actor()
         {
