@@ -12,7 +12,7 @@ namespace Greed.Game.Services
 
         public WeclomeStage()
         {
-
+            cast = setupCast();
         }
 
         public void GetInputs()
@@ -29,7 +29,12 @@ namespace Greed.Game.Services
         {
 
         }
-        
+
+        private Cast setupCast()
+        {
+
+        }
+
 
     }
 }
