@@ -58,7 +58,7 @@ namespace Greed.Game.Casting
         /// Gets the Actor's Volocity.
         /// </summary>
         /// <returns>The Volocity.</returns>
-        public Vector2 GetVolocity()
+        public Vector2 GetVelocity()
         {
             return velocity;
         }
