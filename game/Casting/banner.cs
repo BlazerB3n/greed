@@ -19,9 +19,9 @@ namespace Greed.Game.Casting
 
         
 
-        public void SetMessage()
+        public void SetMessage(string Message)
         {
-            string Message = new Message;
+            message = Message;
 
         }
     }

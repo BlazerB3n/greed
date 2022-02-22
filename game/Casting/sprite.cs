@@ -25,9 +25,9 @@ namespace Greed.Game.Casting
             
         }
 
-        public void SetTextureBounds()
+        public void SetTextureBounds(Rectangle TextureBounds)
         {
-
+            this.TextureBounds =TextureBounds;
         }
     }
 }
