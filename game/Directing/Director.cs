@@ -33,8 +33,14 @@ namespace Greed.Game.Directing
                         videoService.DrawActors(StageList[Stages.TITLE].DoOutputs());
                         break;
                     case Stages.GAME:
+                        StageList[Stages.GAME].GetInputs();
+                        stage = StageList[Stages.GAME].DoUpdates();
+                        videoService.DrawActors(StageList[Stages.GAME].DoOutputs());
                         break;
                     case Stages.END:
+                        StageList[Stages.END].GetInputs();
+                        stage = StageList[Stages.END].DoUpdates();
+                        videoService.DrawActors(StageList[Stages.END].DoOutputs());
                         break;
 
                     default:
