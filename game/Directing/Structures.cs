@@ -32,20 +32,22 @@ namespace Greed.Game.Directing
         END
     }
 
-    public struct TextureRegistry
+    public struct Texture
     {
-        public static Texture2D BUTTON;
-        public static int BUTTON_TextureID;
-        public static string TEXTURE_PATH_BUTTONS = "Data/Textures/Button_play.png";
-
-
-        public static Texture2D PLAYER;
-        public static int PLAYER_TextureID;
-        public static string TEXTURE_PATH_Battler = "Data/Textures/battler_1_1.png";
-
-
-        public static Texture2D ICONS;
-        public static int ICONS_TextureID;
-        public static string TEXTURE_PATH_icons = "Data/Textures/icons_vx.png";
+        public int TEXTURE_ID;
+        public string TEXTURE_PATH;
     }
+    
+    // public struct TextureRegistry
+    // {
+    //     public List<Texture> Textures = new List<Texture>();
+    // //     public static int BUTTON_TextureID = 0;
+    // //     public static string TEXTURE_PATH_BUTTONS = "Data/Textures/Button_play.png";
+
+    // //     public static int PLAYER_TextureID = 1;
+    // //     public static string TEXTURE_PATH_Battler = "Data/Textures/battler_1_1.png";
+
+    // //     public static int ICONS_TextureID = 2;
+    // //     public static string TEXTURE_PATH_icons = "Data/Textures/icons_vx.png";
+    // }
 }

@@ -11,7 +11,8 @@ namespace Greed.Game.Casting
         /// width = the width of the portopn of the png to be displayed
         /// height = the height of the portopn of the png to be displayed
 
-        private Rectangle TextureBounds = new Rectangle(posX, posY, width, height);
+        // private Rectangle TextureBounds = new Rectangle(posX, posY, width, height);
+        private Rectangle TextureBounds = new Rectangle(0, 0, 0, 0);
 
         private TextureType textureType;
 

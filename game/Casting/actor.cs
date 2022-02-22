@@ -10,7 +10,8 @@ namespace Greed.Game.Casting
     {
         /// The position of the object on the screen 
         /// and the size of that object
-        private Rectangle HitBox = new Rectangle(posX, posY, width, height);
+        // private Rectangle HitBox = new Rectangle(posX, posY, width, height);
+        private Rectangle HitBox = new Rectangle(0, 0, 0, 0);
 
         /// the speed and direction the object is moving 
         private Vector2 velocity = new Vector2(0, 0);
@@ -21,7 +22,7 @@ namespace Greed.Game.Casting
 
         /// the type of actor
         private ActorType actorType; 
-        private TextureType textureType;
+        private int TextureID;
 
         public Actor()
         {
@@ -34,6 +35,14 @@ namespace Greed.Game.Casting
         public ActorType GetActorType()
         {
             return actorType;
+        }
+        /// <summary>
+        /// Gets the Actor's Texture ID value.
+        /// </summary>
+        /// <returns>The Texture ID value.</returns>
+        public int GetTextureID()
+        {
+            return TextureID;
         }
 
         /// <summary>
