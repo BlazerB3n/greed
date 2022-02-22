@@ -3,10 +3,10 @@ using static Greed.SYSTEM_SETTINGS;
 
 namespace Greed.Game.Services
 {
-    class VideoSerivce
+    class VideoService
     {
-        TextureSerivce textureSerivce = new TextureSerivce();
-        public VideoSerivce()
+        TextureService textureService = new TextureService();
+        public VideoService()
         {
 
         }

@@ -9,8 +9,8 @@ namespace Greed.Game.Directing
 
     public class Director
     {
-        VideoSerivce videoSerivce = new VideoSerivce();
-        TextureSerivce textureSerivce = new TextureSerivce();
+        VideoService videoService = new VideoService();
+        TextureService textureService = new TextureService();
 
         List<IStage> StageList = new List<IStage>();
         public Director()
