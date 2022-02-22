@@ -21,6 +21,7 @@ namespace Greed
     public static Color WHITE = new Color(255, 255, 255, 255);
     public static int DEFAULT_ARTIFACTS = 40;
     }
+    
     class Program
     {
         static void Main(string[] args)

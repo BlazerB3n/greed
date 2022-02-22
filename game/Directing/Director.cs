@@ -3,6 +3,7 @@ using System.Numerics;
 using System.Collections.Generic;
 using Raylib_cs;
 using Greed.Game.Services;
+using static Greed.SYSTEM_SETTINGS;
 
 namespace Greed.Game.Directing
 {
@@ -23,7 +24,7 @@ namespace Greed.Game.Directing
         public void GameLoop()
         {
             videoService.OpenWindow();
-            while (videoService.IsWindowOpen)
+            while (videoService.IsWindowOpen())
             {
                 switch (stage)
                 {
@@ -44,8 +45,10 @@ namespace Greed.Game.Directing
                         break;
 
                     default:
+                        break;
                 }
             }
+            videoService.CloseWindow();
             
         }
 
