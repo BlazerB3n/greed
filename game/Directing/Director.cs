@@ -67,10 +67,10 @@ namespace Greed.Game.Directing
         {
             // GameStage gameStage = new GameStage(keyboardService, videoService);
             // TitleStage titleStage = new TitleStage(keyboardService, videoService, menu);
-            TitleStage weclomeStage = new TitleStage(keyboardService, videoService, menu);
-            
-            stagelist.Add(Stages.TITLE, weclomeStage);
-            // stagelist.Add(TITEL, titleStage);
+            TitleStage weclomeStage = new TitleStage(inputService, videoService, menu);
+            GameStage gameStage = new GameStage(inputService, videoService, menu);
+            stagelist.Add(Stages.TITLE, welcomeStage);
+            stagelist.Add(Stages.GAME, gameStage);
             // stagelist.Add(GAME, gameStage);
         }
 
