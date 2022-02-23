@@ -2,12 +2,12 @@ using System;
 using System.Numerics;
 using System.Collections.Generic;
 using Raylib_cs;
-using test.Game.Services;
-using test.Game.Casting;
-using test.Game.Screens.Menus;
-using test.Game.Screens;
+using Greed.Game.Services;
+using Greed.Game.Casting;
+using Greed.Game.Screens.Menus;
+using Greed.Game.Screens;
 
-namespace test.Game.Directing
+namespace Greed.Game.Directing
 {
 
     public class Director

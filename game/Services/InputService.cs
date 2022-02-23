@@ -1,8 +1,8 @@
 using Raylib_cs;
-using test.Game.Casting;
+using Greed.Game.Casting;
 using System.Numerics;
 
-namespace test.Game.Services
+namespace Greed.Game.Services
 {
     public class InputService
     {

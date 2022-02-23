@@ -2,9 +2,9 @@ using System;
 using Raylib_cs;
 using System.Numerics;
 
-using test.Game.Directing;
+using Greed.Game.Directing;
 
-namespace test.Game.Casting
+namespace Greed.Game.Casting
 {
     public class Actor
     {

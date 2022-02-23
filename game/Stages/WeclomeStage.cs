@@ -1,17 +1,17 @@
 using Raylib_cs;
-using test;
-using test.Game.Directing;
-using test.Game.Casting;
-using test.Game.Services;
-using test.Game.Screens;
-using test.Game.Screens.Menus;
+using Greed;
+using Greed.Game.Directing;
+using Greed.Game.Casting;
+using Greed.Game.Services;
+using Greed.Game.Screens;
+using Greed.Game.Screens.Menus;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Numerics;
 
-namespace test.Game.Screens
+namespace Greed.Game.Screens
 {
     
     public class TitleStage : IStage

@@ -1,11 +1,11 @@
 using Raylib_cs;
 using System.Collections.Generic;
 using System.Numerics;
-using test.Game.Casting;
-using test.Game.Directing;
-using static test.SYSTEM_SETTINGS;
+using Greed.Game.Casting;
+using Greed.Game.Directing;
+using static Greed.SYSTEM_SETTINGS;
 
-namespace test.Game.Services
+namespace Greed.Game.Services
 {
     public class VideoService
     {

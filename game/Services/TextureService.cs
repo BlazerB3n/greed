@@ -1,7 +1,7 @@
 // using Raylib_cs;
-// using test.Game.Directing;
+// using Greed.Game.Directing;
 
-// namespace test.Game.Services.Video
+// namespace Greed.Game.Services.Video
 // {
 
 //     public class TextureSerivce
@@ -29,7 +29,7 @@
 
 using Raylib_cs;
 
-namespace test.Game.Services
+namespace Greed.Game.Services
 {
     public class TextureService
     {

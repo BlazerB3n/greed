@@ -1,8 +1,8 @@
-using test.Game.Casting;
-using test.Game.Directing;
+using Greed.Game.Casting;
+using Greed.Game.Directing;
 using System.Collections.Generic;
 
-namespace test.Game.Screens.Menus
+namespace Greed.Game.Screens.Menus
 {
     public interface IMenu
     {

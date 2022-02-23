@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using Raylib_cs;
-using test.Game.Directing;
-using test.Game.Services;
+using Greed.Game.Directing;
+using Greed.Game.Services;
 
 
-namespace test
+namespace Greed
 {
     public struct SYSTEM_SETTINGS
     {

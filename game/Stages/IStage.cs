@@ -2,8 +2,7 @@ using Greed.Game.Directing;
 using Greed.Game.Casting;
 using System.Collections.Generic;
 
-namespace Greed.Game.Services
-
+namespace Greed.Game.Screens
 {
     public interface IStage
     {

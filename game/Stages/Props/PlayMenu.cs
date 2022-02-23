@@ -1,11 +1,11 @@
-using test.Game.Services;
-using test.Game.Casting;
-using test.Game.Directing;
+using Greed.Game.Services;
+using Greed.Game.Casting;
+using Greed.Game.Directing;
 using System.Collections.Generic;
 using System.Numerics;
 using Raylib_cs;
 
-namespace test.Game.Screens.Menus
+namespace Greed.Game.Screens.Menus
 {
     public class PlayMenu : IMenu
     {
