@@ -60,6 +60,8 @@ namespace Greed.Game.Screens
             int maxX = SYSTEM_SETTINGS.MAX_X;
             int maxY = SYSTEM_SETTINGS.MAX_Y;
             robot.MoveNext(maxX, maxY);
+            
+            return stage;
         }
 
         /// <summary>
@@ -72,7 +74,7 @@ namespace Greed.Game.Screens
             // videoService.ClearBuffer();
 
             // videoService.DrawActors(actors);
-            videoService.DrawActors(menu[0].GetCast());
+            // videoService.DrawActors(menu[0].GetCast());
             // videoService.FlushBuffer();
             
            
@@ -110,7 +112,7 @@ namespace Greed.Game.Screens
             List<Actor> other = new List<Actor>();
             other.AddRange(cast.GetAllActors());
 
-            Console.WriteLine("Setup TITLE Cast");
+            Console.WriteLine("Setup GAME Cast");
 
             return cast;
         }

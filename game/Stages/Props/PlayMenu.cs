@@ -25,6 +25,7 @@ namespace Greed.Game.Screens.Menus
         Sprite sprite = null;
         
             Sprite StartGameButton = new Sprite(1, TextureRegistry.BOTTON_TextureID);
+            Sprite settingsButton = new Sprite(1, TextureRegistry.BOTTON_TextureID);
 
         Button btnAction = Button.NONE;
         public PlayMenu(int x, int y, InputService input)
@@ -46,22 +47,31 @@ namespace Greed.Game.Screens.Menus
         }
         public void DoUpdates()
         {
-            Raylib_cs.Rectangle hitbox = StartGameButton.GetHitBox();
-            if (Raylib_cs.Raylib.CheckCollisionPointRec(mousePoint, StartGameButton.GetHitBox()))
+            foreach (Actor item in MenuCast.GetAllActors())
             {
-                if (Raylib_cs.Raylib.IsMouseButtonDown(Raylib_cs.MouseButton.MOUSE_BUTTON_LEFT)) btnState = 2;
-                    else btnState = 1;
+                if(item.GetActorID() > 0)
+                {
+                    Sprite sprite = (Sprite) item;
+                    // Raylib_cs.Rectangle hitbox = item.GetHitBox();
+                    if (Raylib_cs.Raylib.CheckCollisionPointRec(mousePoint, item.GetHitBox()))
+                    {
+                        if (Raylib_cs.Raylib.IsMouseButtonDown(Raylib_cs.MouseButton.MOUSE_BUTTON_LEFT)) btnState = 2;
+                            else btnState = 1;
 
-                if (Raylib_cs.Raylib.IsMouseButtonReleased(Raylib_cs.MouseButton.MOUSE_BUTTON_LEFT)) btnAction = Button.Play;
-            }
-            else
-            {
-                btnState = 0;
+                        if (Raylib_cs.Raylib.IsMouseButtonReleased(Raylib_cs.MouseButton.MOUSE_BUTTON_LEFT)) btnAction = sprite.GetButtonType();
+                    }
+                    else
+                    {
+                        btnState = 0;
+                    } 
+                    sprite.TextureBounds.x = 34 * btnState;
+                 
+                }
             }
         }
         public void DoOutputs()
         {
-            StartGameButton.TextureBounds.x = 34 * btnState;
+            // StartGameButton.TextureBounds.x = 34 * btnState;
         }
 
         public List<Actor> GetCast()
@@ -84,17 +94,21 @@ namespace Greed.Game.Screens.Menus
             StartGameButton.SetTextureBounds(new Raylib_cs.Rectangle(0, 0, 34, 10));
             StartGameButton.SetHitBox(new Raylib_cs.Rectangle(0, 0, 306, 90));
             StartGameButton.SetPosition(new Vector2(x+12, y+12));
+            StartGameButton.setButtonType(Button.Play);
             // StartGameButton.SetTextureID();
             MenuCast.AddActor("play", StartGameButton);
             
-            StartGameButton.SetTextureBounds(new Raylib_cs.Rectangle(0, 0, 34, 10));
-            StartGameButton.SetHitBox(new Raylib_cs.Rectangle(0, 0, 306, 90));
-            StartGameButton.SetPosition(new Vector2(x+12, y+12));
+            settingsButton.SetTextureBounds(new Raylib_cs.Rectangle(0, 0, 34, 10));
+            settingsButton.SetHitBox(new Raylib_cs.Rectangle(0, 0, 200, 90));
+            settingsButton.SetPosition(new Vector2(x+12, y+200));
+            settingsButton.setButtonType(Button.settings);
             
             MenuCast.AddActor("play", StartGameButton);
+            MenuCast.AddActor("settings", settingsButton);
             
 
 
         }
+
     }
 }

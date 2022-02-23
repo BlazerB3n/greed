@@ -35,15 +35,15 @@ namespace Greed.Game.Directing
 
     public struct TextureRegistry
     {
-        public static int BOTTON_TextureID = 0;
+        public static int BOTTON_TextureID = 1;
         public static string TEXTURE_PATH_BUTTONS = "Data/Textures/Button_play.png";
 
 
-        public static int PLAYER_TextureID = 1;
+        public static int PLAYER_TextureID = 2;
         public static string TEXTURE_PATH_Battler = "Data/Textures/battler_1_1.png";
 
 
-        public static int ICONS_TextureID = 2;
+        public static int ICONS_TextureID = 0;
         public static string TEXTURE_PATH_icons = "Data/Textures/icons_vx.png";
     }
 }

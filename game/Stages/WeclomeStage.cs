@@ -19,6 +19,8 @@ namespace Greed.Game.Screens
 
         List<IMenu> menu = null;
 
+        int menuIndex = 0;
+
         public TitleStage(InputService inputService, VideoService videoService, List<IMenu> GUI)
         {
             this.inputService = inputService;
@@ -35,7 +37,7 @@ namespace Greed.Game.Screens
         {
             Actor robot = cast.GetFirstActor("robot");
 
-            robot.SetVelocity(inputService.Scale(SYSTEM_SETTINGS.CELL_SIZE, new Vector2(-1, 0)));
+            robot.SetVelocity(inputService.Scale(SYSTEM_SETTINGS.CELL_SIZE, new Vector2(1, 0)));
            
 
         }
@@ -54,11 +56,19 @@ namespace Greed.Game.Screens
             int maxX = SYSTEM_SETTINGS.MAX_X;
             int maxY = SYSTEM_SETTINGS.MAX_Y;
             robot.MoveNext(maxX, maxY);
-             if (menu[0].isButtonPressed() == Button.Play)
+
+            switch (menu[menuIndex].isButtonPressed())
             {
-                stage = Stages.GAME;
-            }else{
-                stage = Stages.TITLE;
+                case Button.Play:
+                    stage = Stages.GAME;
+                    break;
+                case Button.settings:
+                    menuIndex = 1;
+                    break;
+                default:
+                    stage = Stages.TITLE;
+                    break;
+
             }
 
             return stage;
@@ -74,8 +84,8 @@ namespace Greed.Game.Screens
             List<Actor> actors = cast.GetAllActors();
             // videoService.ClearBuffer();
 
-            // videoService.DrawActors(actors);
-            videoService.DrawActors(menu[0].GetCast());
+            videoService.DrawActors(actors);
+            videoService.DrawActors(menu[menuIndex].GetCast());
             // videoService.FlushBuffer();
             
            
@@ -99,14 +109,25 @@ namespace Greed.Game.Screens
             // create the Robot Sprite
             Random random = new Random();
             Sprite robot = new Sprite(1, TextureRegistry.PLAYER_TextureID);
-            Vector2 vec =  inputService.Scale(SYSTEM_SETTINGS.CELL_SIZE, 
-                                                new Vector2(random.Next(1, SYSTEM_SETTINGS.COLS), 
-                                                                 random.Next(1, SYSTEM_SETTINGS.ROWS)));
+
+            Vector2 vec =  inputService.Scale(SYSTEM_SETTINGS.CELL_SIZE, new Vector2(20, 20));
+
             robot.SetHitBox(new Rectangle(vec.X, vec.Y, 64, 64));
             
             robot.SetTextureBounds(new Raylib_cs.Rectangle(64*8,64*5,64,64));
             cast.AddActor("robot", robot);
 
+
+            vec =  inputService.Scale(SYSTEM_SETTINGS.CELL_SIZE, 
+                                                new Vector2(random.Next(3, SYSTEM_SETTINGS.COLS), 
+                                                                 random.Next(1, SYSTEM_SETTINGS.ROWS)));
+            
+
+            Sprite gem = new Sprite(1, TextureRegistry.ICONS_TextureID);
+
+            gem.SetHitBox(new Rectangle(400, 0, 24, 24));
+            gem.SetTextureBounds(new Rectangle(12*24,1*24, 24,24));
+            cast.AddActor("gem", gem);
            
             // create the menu
             List<Actor> other = new List<Actor>();
