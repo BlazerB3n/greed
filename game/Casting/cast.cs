@@ -6,6 +6,7 @@ namespace Greed.Game.Casting
     public class Cast
     {
         private Dictionary<string, List<Actor>> actors = new Dictionary<string, List<Actor>>();
+        
         public Cast()
         {
 
