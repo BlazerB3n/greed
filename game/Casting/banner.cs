@@ -8,6 +8,7 @@ namespace Greed.Game.Casting
         private string message = "";
 
         public int FontSize = SYSTEM_SETTINGS.FONT_SIZE;
+        
         public Banner(int ID) : base(ID)
         {
 
