@@ -40,11 +40,11 @@ namespace Greed
             TexturesList.Add(Battler);
             TexturesList.Add(Icons);
 
-            InputService keyboardService = new InputService();
+            InputService inputService = new InputService();
             VideoService videoService 
                 = new VideoService(false, TexturesList);
 
-            Director director = new Director(keyboardService, videoService);
+            Director director = new Director(inputService, videoService);
             
             director.GameLoop();
         }

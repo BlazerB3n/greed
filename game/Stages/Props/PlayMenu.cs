@@ -15,7 +15,7 @@ namespace Greed.Game.Screens.Menus
         int x;
         int y;
 
-        InputService mouse = null;
+        InputService inputService = null;
 
         
         Vector2 mousePoint = new Vector2( 0.0f, 0.0f );
@@ -31,7 +31,7 @@ namespace Greed.Game.Screens.Menus
         {
             this.x = x;
             this.y = y;
-            mouse = input;
+            inputService = input;
             
             window.SetHitBox(new Raylib_cs.Rectangle(x,y, 256,256));
             window.SetColor(new Color(20 ,14, 124, 255));
@@ -86,6 +86,13 @@ namespace Greed.Game.Screens.Menus
             StartGameButton.SetPosition(new Vector2(x+12, y+12));
             // StartGameButton.SetTextureID();
             MenuCast.AddActor("play", StartGameButton);
+            
+            StartGameButton.SetTextureBounds(new Raylib_cs.Rectangle(0, 0, 34, 10));
+            StartGameButton.SetHitBox(new Raylib_cs.Rectangle(0, 0, 306, 90));
+            StartGameButton.SetPosition(new Vector2(x+12, y+12));
+            
+            MenuCast.AddActor("play", StartGameButton);
+            
 
 
         }

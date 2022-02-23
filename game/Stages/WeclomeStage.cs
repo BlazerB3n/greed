@@ -13,15 +13,15 @@ namespace Greed.Game.Screens
     public class TitleStage : IStage
     {
         private Cast cast = null;
-        private InputService keyboardService = null;
+        private InputService inputService = null;
         private VideoService videoService = null;
         Stages stage = Stages.TITLE;
 
         List<IMenu> menu = null;
 
-        public TitleStage(InputService keyboardService, VideoService videoService, List<IMenu> GUI)
+        public TitleStage(InputService inputService, VideoService videoService, List<IMenu> GUI)
         {
-            this.keyboardService = keyboardService;
+            this.inputService = inputService;
             this.videoService = videoService;
             menu = GUI;
             cast = SetupCast();
@@ -35,7 +35,7 @@ namespace Greed.Game.Screens
         {
             Actor robot = cast.GetFirstActor("robot");
 
-            robot.SetVelocity(keyboardService.Scale(SYSTEM_SETTINGS.CELL_SIZE, new Vector2(-1, 0)));
+            robot.SetVelocity(inputService.Scale(SYSTEM_SETTINGS.CELL_SIZE, new Vector2(-1, 0)));
            
 
         }
@@ -89,7 +89,6 @@ namespace Greed.Game.Screens
 
             // create the banner with ID -1;
             Banner banner = new Banner(-1);
-
             banner.SetMessage("WELCOME TO GREED");
             banner.FontSize = 30;
             // banner.SetFont(30);
@@ -100,7 +99,7 @@ namespace Greed.Game.Screens
             // create the Robot Sprite
             Random random = new Random();
             Sprite robot = new Sprite(1, TextureRegistry.PLAYER_TextureID);
-            Vector2 vec =  keyboardService.Scale(SYSTEM_SETTINGS.CELL_SIZE, 
+            Vector2 vec =  inputService.Scale(SYSTEM_SETTINGS.CELL_SIZE, 
                                                 new Vector2(random.Next(1, SYSTEM_SETTINGS.COLS), 
                                                                  random.Next(1, SYSTEM_SETTINGS.ROWS)));
             robot.SetHitBox(new Rectangle(vec.X, vec.Y, 64, 64));

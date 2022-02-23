@@ -12,7 +12,7 @@ namespace Greed.Game.Directing
 
     public class Director
     {
-        private InputService keyboardService = null;
+        private InputService inputService = null;
         private VideoService videoService = null;
 
         Stages stage = Stages.TITLE;
@@ -27,16 +27,16 @@ namespace Greed.Game.Directing
         /// <summary>
         /// Constructs a new instance of Director using the given KeyboardService and VideoService.
         /// </summary>
-        /// <param name="keyboardService">The given KeyboardService.</param>
+        /// <param name="inputService">The given KeyboardService.</param>
         /// <param name="videoService">The given VideoService.</param>
-        public Director(InputService keyboardService, VideoService videoService)
+        public Director(InputService inputService, VideoService videoService)
         {
-            this.keyboardService = keyboardService;
+            this.inputService = inputService;
             this.videoService = videoService;
 
             menus = SetupMenus();
             
-            SetupStages(keyboardService, videoService, menus);
+            SetupStages(inputService, videoService, menus);
 
         }
         public void GameLoop()
@@ -62,12 +62,13 @@ namespace Greed.Game.Directing
         }
 
 
-        private void SetupStages(InputService keyboardService, VideoService videoService, 
+        private void SetupStages(InputService inputService, VideoService videoService, 
                                         List<IMenu> menu)
         {
             // GameStage gameStage = new GameStage(keyboardService, videoService);
             // TitleStage titleStage = new TitleStage(keyboardService, videoService, menu);
-            TitleStage weclomeStage = new TitleStage(keyboardService, videoService, menu);
+            TitleStage weclomeStage = new TitleStage(inputService, videoService, menu);
+            
             
             stagelist.Add(Stages.TITLE, weclomeStage);
             // stagelist.Add(TITEL, titleStage);
@@ -78,7 +79,7 @@ namespace Greed.Game.Directing
         {
             //Dictionary<string, MenuService> MenuList = new Dictionary<string, MenuService>();
             List<IMenu> MenuList = new List<IMenu>();
-            PlayMenu main = new PlayMenu(200, 200, keyboardService);
+            PlayMenu main = new PlayMenu(200, 200, inputService);
 
             MenuList.Add(main);
 
