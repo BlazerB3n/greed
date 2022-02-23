@@ -26,15 +26,7 @@ namespace Greed.Game.Screens
             menu = GUI;
             cast = SetupCast();
         }
-
-        public void RunAct()
-        {
-            GetInputs();
-            DoUpdates();
-            DoUpdates();
-        }
-
-
+        
         /// <summary>
         /// Gets directional input from the keyboard and applies it to the robot.
         /// </summary>
