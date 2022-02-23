@@ -68,10 +68,10 @@ namespace Greed.Game.Screens
         /// </summary>
         public List<Actor> DoOutputs()
         {
-
+            
             List<Actor> actors = cast.GetAllActors();
             // videoService.ClearBuffer();
-
+            Banner banner = (Banner) cast.GetFirstActor("banner");
             // videoService.DrawActors(actors);
             // videoService.DrawActors(menu[0].GetCast());
             // videoService.FlushBuffer();
