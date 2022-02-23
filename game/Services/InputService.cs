@@ -6,9 +6,8 @@ namespace Greed.Game.Services
 {
     public class InputService
     {
-        public InputService(int CELL_SIZE)
+        public InputService()
         {
-            SYSTEM_SETTINGS.CELL_SIZE = CELL_SIZE;
         }
         /// <summary>
         /// Adds the given point to this one by summing the x and y values.

@@ -90,7 +90,7 @@ namespace Greed.Game.Screens
             // create the banner with ID -1;
             Banner banner = new Banner(-1);
 
-            banner.SetMessage("WELCOME TO FIND THE KITTY");
+            banner.SetMessage("WELCOME TO GREED");
             banner.FontSize = 30;
             // banner.SetFont(30);
             banner.SetColor(new Color(12, 24, 124, 255));
