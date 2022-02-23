@@ -60,7 +60,6 @@ namespace Greed.Game.Screens
             int maxX = SYSTEM_SETTINGS.MAX_X;
             int maxY = SYSTEM_SETTINGS.MAX_Y;
             robot.MoveNext(maxX, maxY);
-            
             return stage;
         }
 
@@ -77,6 +76,7 @@ namespace Greed.Game.Screens
             // videoService.DrawActors(menu[0].GetCast());
             // videoService.FlushBuffer();
             
+            banner.SetMessage("Total Score: ");
            
 
             return actors;
@@ -89,7 +89,6 @@ namespace Greed.Game.Screens
             // create the banner with ID -1;
             Banner banner = new Banner(-1);
 
-            banner.SetMessage("Total Score: ");
             banner.FontSize = 30;
             // banner.SetFont(30);
             banner.SetColor(new Color(12, 24, 124, 255));

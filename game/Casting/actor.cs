@@ -23,6 +23,8 @@ namespace Greed.Game.Casting
         // private static int actorType; 
         
         private int ID;
+
+        private int Score = 0;
         
 
         public Actor(int ID)
