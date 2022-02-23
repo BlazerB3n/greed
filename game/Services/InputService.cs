@@ -33,5 +33,35 @@ namespace Greed.Game.Services
             return new Vector2(x, y);
         }
 
+        public Vector2 GetDirection()
+        {
+            int dx = 0;
+            int dy = 0;
+
+            if (Raylib.IsKeyDown(KeyboardKey.KEY_LEFT))
+            {
+                dx = -1;
+            }
+
+            if (Raylib.IsKeyDown(KeyboardKey.KEY_RIGHT))
+            {
+                dx = 1;
+            }
+
+            if (Raylib.IsKeyDown(KeyboardKey.KEY_UP))
+            {
+                dy = -1;
+            }
+
+            if (Raylib.IsKeyDown(KeyboardKey.KEY_DOWN))
+            {
+                dy = 1;
+            }
+
+            Vector2 direction = new Vector2(dx, dy);
+            direction = Scale(SYSTEM_SETTINGS.CELL_SIZE, direction);
+
+            return direction;
+        }
     }
 }

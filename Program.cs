@@ -16,7 +16,7 @@ namespace Greed
     public static int FONT_SIZE = 24;
     public static int COLS = 40;
     public static int ROWS = 26;
-    public static string CAPTION = "Robot Finds Kitten";
+    public static string CAPTION ="Greed";
     public static string DATA_PATH = "Data/messages.txt";
     public static string TEXTURE_PATH_icons = "Data/Textures/icons_vx.png";
     public static string TEXTURE_PATH_Battler = "Data/Textures/battler_1_1.png";
