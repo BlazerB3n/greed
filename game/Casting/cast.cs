@@ -1,7 +1,7 @@
-using Greed.Game.Casting;
+using test.Game.Casting;
 using System.Collections.Generic;
 
-namespace Greed.Game.Casting
+namespace test.Game.Casting
 {
     public class Cast
     {
@@ -10,7 +10,6 @@ namespace Greed.Game.Casting
         {
 
         }
-
         public void AddActor(string group, Actor actor)
         {
             if (!actors.ContainsKey(group))
@@ -66,8 +65,6 @@ namespace Greed.Game.Casting
             }
 
         }
-
-
 
     }
 }

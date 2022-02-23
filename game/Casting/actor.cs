@@ -2,9 +2,9 @@ using System;
 using Raylib_cs;
 using System.Numerics;
 
-using Greed.Game.Directing;
+using test.Game.Directing;
 
-namespace Greed.Game.Casting
+namespace test.Game.Casting
 {
     public class Actor
     {
@@ -15,45 +15,79 @@ namespace Greed.Game.Casting
 
         /// the speed and direction the object is moving 
         private Vector2 velocity = new Vector2(0, 0);
-    
 
         /// the color tint of object
         private Color color = new Color(255, 255, 255, 255);
 
         /// the type of actor
-        private ActorType actorType; 
-        private int TextureID;
+        // private static int actorType; 
+        
+        private int ID;
+        
 
-        public Actor()
+        public Actor(int ID)
         {
+            this.ID = ID;
         }
 
         /// <summary>
         /// Gets the Actor's ID value.
         /// </summary>
         /// <returns>The ID value.</returns>
-        public ActorType GetActorType()
+        public int GetActorID()
         {
-            return actorType;
+            return ID;
         }
+
         /// <summary>
-        /// Gets the Actor's Texture ID value.
+        /// sets the Actor's type value.
         /// </summary>
-        /// <returns>The Texture ID value.</returns>
-        public int GetTextureID()
+        public void SetActorID(int id)
         {
-            return TextureID;
+            this.ID = id;
+        }
+
+        // /// <summary>
+        // /// Gets the Actor's ID value.
+        // /// </summary>
+        // /// <returns>The ID value.</returns>
+        // public int GetActorType()
+        // {
+        //     return actorType;
+        // }
+
+        // /// <summary>
+        // /// sets the Actor's type value.
+        // /// </summary>
+        // public void SetActorType(ActorType type)
+        // {
+        //     actorType = (int) type;
+        // }
+
+        /// <summary>
+        /// Gets the Actor's Position.
+        /// </summary>
+        /// <returns>The Position.</returns>
+        public void SetHitBox(Raylib_cs.Rectangle box)
+        {
+            HitBox = box;
         }
 
         /// <summary>
         /// Gets the Actor's Position.
         /// </summary>
         /// <returns>The Position.</returns>
-        public Raylib_cs.Rectangle GetPosition()
+        public Raylib_cs.Rectangle GetHitBox()
         {
             return HitBox;
         }
 
+        public Vector2 GetPossition()
+        {
+            float x = HitBox.x;
+            float y = HitBox.y;
+            return new Vector2(x, y);
+        }
         /// <summary>
         /// Gets the Actor's Volocity.
         /// </summary>
@@ -124,6 +158,5 @@ namespace Greed.Game.Casting
             }
             this.velocity = velocity;
         }
-
     }
 }

@@ -1,19 +1,25 @@
 using Raylib_cs;
 using System.Collections.Generic;
 using System.Numerics;
-using Greed.Game.Casting;
-using Greed.Game.Directing; 
-using static Greed.SYSTEM_SETTINGS;
+using test.Game.Casting;
+using test.Game.Directing;
+using static test.SYSTEM_SETTINGS;
 
-namespace Greed.Game.Services
+namespace test.Game.Services
 {
     public class VideoService
     {
-        TextureService textureSerivce = new TextureService();
+        // List<Texture2D> ListTexture = new List<Texture2D>();
+        // TextureService textureService = null;
 
-        Dictionary<int, Texture2D> textureList = null;
-        public VideoService()
+        List<TextureService> TextureList = null;
+        Dictionary<int, Texture2D> textures = new Dictionary<int, Texture2D>();
+        
+        private bool debug = false;
+        public VideoService(bool debug, List<TextureService> texturelist)
         {
+            this.debug = debug;
+            this.TextureList = texturelist;
 
         }
 
@@ -21,8 +27,13 @@ namespace Greed.Game.Services
         {
             Raylib.InitWindow(SYSTEM_SETTINGS.MAX_X, SYSTEM_SETTINGS.MAX_Y, SYSTEM_SETTINGS.CAPTION);
             Raylib.SetTargetFPS(SYSTEM_SETTINGS.FRAME_RATE);
-
-            textureList = textureSerivce.SetupTextures();
+            
+            foreach (TextureService item in TextureList)
+            {
+                // ListTexture.Add(Raylib.LoadTextureFromImage(item.GetTexture()));
+                textures.Add(item.GetTextureID(), Raylib.LoadTextureFromImage(item.GetTexture()));
+                item.UnloadTexture();
+            } 
 
 
 
@@ -42,6 +53,10 @@ namespace Greed.Game.Services
         {
             Raylib.BeginDrawing();
             Raylib.ClearBackground(Raylib_cs.Color.WHITE);
+            if (debug)
+            {
+                // DrawGrid();
+            }
 
         }
         
@@ -54,45 +69,100 @@ namespace Greed.Game.Services
         {
             foreach (Actor actor in actors)
             {
-                switch (actor.GetActorType())
+                int id = (int) actor.GetActorID();
+                if (id > -1)
                 {
-                    case ActorType.Banner:
-                        DrawBanner((Banner) actor);
-                        break;
-                    case ActorType.Box:
-                        DrawBox((Sprite) actor);
-                        break;
-                    case ActorType.Button:
-                        DrawButton((Sprite) actor);
-                        break;
-                    case ActorType.Sprite:
-                        DrawSprite((Sprite) actor);
-                        break;
-                    
-                    
-                    default:
-                        break;
-                } 
+                    switch (id)
+                    {
+                        case -1:
+                            DrawBanner(actor);
+                            break;
+                        case 2:
+                            DrawBox(actor);
+                            break;
+                        case 3:
+                            DrawSprite(actor);
+                            break;
+                        case 1:
+                            DrawSprite(actor);
+                            break;
+                        
+                        
+                        default:
+                            break;
+                    } 
+                }
+                else
+                {
+                    DrawBanner(actor);
+                }
             }
         }
         
-        private void DrawBox(Sprite sprite)
+        private void DrawBox(Actor actor)
         {
-            Raylib.DrawRectangleRec(sprite.GetTextureBounds(), sprite.GetColor());
+        
+            Raylib.DrawRectangleRec(actor.GetHitBox(), actor.GetColor());
         }
-        private void DrawSprite(Sprite sprite)
+        // private void DrawSprite(Sprite actor)
+        // {
+        //         Raylib.DrawTexturePro(, new Rectangle(0, 0, (float) 34, 
+        //                         (float) 10), new Rectangle(0,0, 1020, 300), new Vector2(0,0) , 0 , Color.WHITE);
+        // }
+/// <summary>
+        /// Draws the given actor's text on the screen.
+        /// </summary>
+        /// <param name="actor">The actor to draw.</param>
+        public void DrawSprite(Actor actor)
         {
-            Raylib.DrawTexturePro(textureList[sprite.GetTextureID()], sprite.GetTextureBounds(), sprite.GetPosition(), new Vector2(0,0) , 0 , Color.WHITE);
-        }
 
-        private void DrawButton(Sprite sprite)
+            
+            Rectangle hitBox = actor.GetHitBox();
+            
+            int x = (int) hitBox.x;
+            int y = (int) hitBox.y;
+
+            // int x = actor.GetPosition().GetX();
+            // int y = actor.GetPosition().GetY();
+            // int fontSize = actor.GetFontSize();
+
+            Raylib_cs.Color color = actor.GetColor();
+            Sprite sprite = (Sprite) actor;
+            
+            int id = (int) sprite.GetTextureID();
+
+            if (id == -1)
+            {
+                Raylib.DrawRectangleRec(sprite.GetTextureBounds(), color);
+                return;
+            }
+
+            // else if (!textures.ContainsKey(id))
+            // {
+                
+            //     textures.Add(id, Raylib.LoadTextureFromImage(TextureList[id].GetTexture()));
+            //     TextureList.RemoveAt(id);
+            //     // textures[id] = Raylib.LoadTextureFromImage(sprite.GetTexture());
+            // }
+
+            Texture2D texture = textures[id];
+
+            Raylib.DrawTexturePro(texture, sprite.GetTextureBounds(), hitBox, new Vector2(0,0) , 0 , Color.WHITE);
+            
+            // Raylib.DrawTextureRec(texture, sprite.GetRectangle(), new System.Numerics.Vector2( x, y), color);
+            
+        }
+        private void DrawButton(Actor actor)
         {
 
         }
         
-        private void DrawBanner(Banner actor)
+        private void DrawBanner(Actor actor)
         {
-
+            Banner banner = (Banner) actor;
+            int x = (int) banner.GetPossition().X;
+            int y = (int) banner.GetPossition().Y;
+            Raylib.DrawText(banner.GetMessage(), x,y,banner.FontSize, banner.GetColor());
         }
         
     }

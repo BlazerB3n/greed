@@ -1,7 +1,7 @@
 using Raylib_cs;
-using Greed.Game.Directing;
+using test.Game.Directing;
 
-namespace Greed.Game.Casting
+namespace test.Game.Casting
 {
     public class Sprite : Actor
     {
@@ -10,17 +10,14 @@ namespace Greed.Game.Casting
         /// posY = y on the png
         /// width = the width of the portopn of the png to be displayed
         /// height = the height of the portopn of the png to be displayed
-
         // private Rectangle TextureBounds = new Rectangle(posX, posY, width, height);
-        private Rectangle TextureBounds = new Rectangle(0, 0, 0, 0);
-
+        public Rectangle TextureBounds = new Rectangle(0, 0, 0, 0);
         private TextureType textureType;
-
-        public Sprite() : base()
+        int TextureID;
+        public Sprite(int ID, int TextureID) : base(ID)
         {
-            
+            this.TextureID = TextureID;
         }
-
         public Rectangle GetTextureBounds()
         {
             return TextureBounds;
@@ -32,16 +29,27 @@ namespace Greed.Game.Casting
             this.TextureBounds = TextureBounds;
 
         }
-        public TextureType GetTextureType()
+
+        public int GetTextureID()
         {
-            return textureType;
+            return TextureID;
             
         }
 
-        public void SetTextureType(TextureType textureType)
+        public void SetTextureID(int TextureID)
         {
-            this.textureType  = textureType;
+            this.TextureID  = TextureID;
         }
-        
+
+        // public TextureType GetTextureType()
+        // {
+        //     return textureType;
+            
+        // }
+
+        // public void SetTextureType(TextureType textureType)
+        // {
+        //     this.textureType  = textureType;
+        // }
     }
 }
