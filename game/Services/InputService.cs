@@ -28,8 +28,8 @@ namespace Greed.Game.Services
         /// <returns>A scaled instance of Point.</returns>
         public Vector2 Scale(int factor, Vector2 point)
         {
-            float x = point.X * factor;
-            float y = point.Y * factor;
+            int x = (int) point.X * factor;
+            int y = (int) point.Y * factor;
             return new Vector2(x, y);
         }
 

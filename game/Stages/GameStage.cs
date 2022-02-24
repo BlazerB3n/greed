@@ -41,8 +41,10 @@ namespace Greed.Game.Screens
         public void GetInputs()
         {
             Actor robot = cast.GetFirstActor("robot");
-
-            robot.SetVelocity(inputService.Scale(SYSTEM_SETTINGS.CELL_SIZE, new Vector2(-1, 0)));
+            
+            Vector2 direction =  inputService.GetDirection();
+            direction.Y = 0;
+            robot.SetVelocity( direction);
            
 
         }
@@ -52,6 +54,28 @@ namespace Greed.Game.Screens
         /// </summary>
         public Stages DoUpdates()
         {
+            // for (int i = 0; i < 5; i++)
+            // {
+            //     // Create Ruby Sprite
+            //     Sprite ruby = new Sprite(1, TextureRegistry.ICONS_TextureID);
+
+            //     ruby.SetHitBox(new Rectangle(vec.X, 24, 64, 64));
+                
+            //     ruby.SetTextureBounds(new Rectangle(9*24,1*24, 24,24));
+                
+            //     cast.AddActor("ruby", ruby);
+
+            //     // Create Rock Sprite
+            //     Sprite rock = new Sprite(1, TextureRegistry.ICONS_TextureID);
+
+            //     rock.SetHitBox(new Rectangle(vec.X, 24, 64, 64));
+                
+                
+            //     rock.SetTextureBounds(new Rectangle(14*24,1*24, 24,24));
+            //     cast.AddActor("rock", rock);
+                
+            // }
+            
             Banner banner = (Banner) cast.GetFirstActor("banner");
             Sprite robot = (Sprite) cast.GetFirstActor("robot");
             // List<Actor> artifacts = cast.GetActors("artifacts");
@@ -60,6 +84,7 @@ namespace Greed.Game.Screens
             int maxX = SYSTEM_SETTINGS.MAX_X;
             int maxY = SYSTEM_SETTINGS.MAX_Y;
             robot.MoveNext(maxX, maxY);
+            
             return stage;
         }
 
@@ -72,15 +97,17 @@ namespace Greed.Game.Screens
             List<Actor> actors = cast.GetAllActors();
             // videoService.ClearBuffer();
             Banner banner = (Banner) cast.GetFirstActor("banner");
-            // videoService.DrawActors(actors);
+            Sprite robot = (Sprite) cast.GetFirstActor("robot");
+            // videoService.DrawActors(actors); 
             // videoService.DrawActors(menu[0].GetCast());
             // videoService.FlushBuffer();
             
-            banner.SetMessage("Total Score: ");
+            banner.SetMessage("Total Score: " + robot.score);
            
 
             return actors;
         }
+
 
         private Cast SetupCast()
         {
@@ -91,22 +118,50 @@ namespace Greed.Game.Screens
 
             banner.FontSize = 30;
             // banner.SetFont(30);
-            banner.SetColor(new Color(12, 24, 124, 255));
+            banner.SetColor(Color.BLACK);
             banner.SetPosition(new Vector2(SYSTEM_SETTINGS.CELL_SIZE, 0));
+            
+            //bannerbackground
+            Actor bannerbackground = new Actor(2);
+            bannerbackground.SetHitBox(new Rectangle(0, 0, SYSTEM_SETTINGS.MAX_X, 24));
+            
+            bannerbackground.SetColor(new Color(133, 23, 234, 150));
+            cast.AddActor("bannerbackground", bannerbackground);
             cast.AddActor("banner", banner);
 
             // create the Robot Sprite
             Random random = new Random();
             Sprite robot = new Sprite(1, TextureRegistry.PLAYER_TextureID);
+            robot.score = 0;
             Vector2 vec =  inputService.Scale(SYSTEM_SETTINGS.CELL_SIZE, 
                                                 new Vector2(random.Next(1, SYSTEM_SETTINGS.COLS), 
                                                                  random.Next(1, SYSTEM_SETTINGS.ROWS)));
-            robot.SetHitBox(new Rectangle(vec.X, vec.Y, 64, 64));
+            robot.SetHitBox(new Rectangle(SYSTEM_SETTINGS.MAX_X/2, SYSTEM_SETTINGS.MAX_Y-69, 64, 64));
             
             robot.SetTextureBounds(new Raylib_cs.Rectangle(64*8,64*5,64,64));
             cast.AddActor("robot", robot);
 
-           
+            // Create Ruby Sprite
+            Sprite ruby = new Sprite(1, TextureRegistry.ICONS_TextureID);
+
+            ruby.SetHitBox(new Rectangle(vec.X, 24, 64, 64));
+            
+            ruby.SetTextureBounds(new Rectangle(9*24,1*24, 24,24));
+            
+            cast.AddActor("ruby", ruby);
+
+            vec =  inputService.Scale(SYSTEM_SETTINGS.CELL_SIZE, 
+                                                new Vector2(random.Next(1, SYSTEM_SETTINGS.COLS), 
+                                                                 random.Next(1, SYSTEM_SETTINGS.ROWS)));
+            // Create Rock Sprite
+            Sprite rock = new Sprite(1, TextureRegistry.ICONS_TextureID);
+
+            rock.SetHitBox(new Rectangle(vec.X, 24, 64, 64));
+            
+            
+            rock.SetTextureBounds(new Rectangle(14*24,1*24, 24,24));
+            cast.AddActor("rock", rock);
+
             // create the menu
             List<Actor> other = new List<Actor>();
             other.AddRange(cast.GetAllActors());
