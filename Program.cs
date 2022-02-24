@@ -32,10 +32,12 @@ namespace Greed
 
             TextureService Icons = new TextureService(TextureRegistry.TEXTURE_PATH_icons, TextureRegistry.ICONS_TextureID);
             TextureService Battler = new TextureService(TextureRegistry.TEXTURE_PATH_Battler, TextureRegistry.PLAYER_TextureID);
-            TextureService Buttons = new TextureService(TextureRegistry.TEXTURE_PATH_BUTTONS, TextureRegistry.BOTTON_TextureID);
+            TextureService Buttons = new TextureService(TextureRegistry.TEXTURE_PATH_BUTTONS, TextureRegistry.Play_BOTTON_TextureID);
+            TextureService settings = new TextureService(TextureRegistry.TEXTURE_PATH_settings, TextureRegistry.settings_Button_TextureID);
 
 
             List<TextureService> TexturesList = new List<TextureService>();
+            TexturesList.Add(settings);
             TexturesList.Add(Buttons);
             TexturesList.Add(Battler);
             TexturesList.Add(Icons);

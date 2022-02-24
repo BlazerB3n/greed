@@ -25,8 +25,8 @@ namespace Greed.Game.Screens.Menus
 
         Sprite sprite = null;
         
-            Sprite StartGameButton = new Sprite(1, TextureRegistry.BOTTON_TextureID);
-            Sprite settingsButton = new Sprite(1, TextureRegistry.BOTTON_TextureID);
+            Sprite StartGameButton = new Sprite(1, TextureRegistry.Play_BOTTON_TextureID);
+            Sprite settingsButton = new Sprite(1, TextureRegistry.settings_Button_TextureID);
 
         Button btnAction = Button.NONE;
         public PlayMenu(int x, int y, int width, int height, InputService input)
@@ -67,7 +67,17 @@ namespace Greed.Game.Screens.Menus
                     {
                         btnState = 0;
                     } 
-                    sprite.TextureBounds.x = 34 * btnState;
+                    switch (sprite.GetTextureID())
+                    {
+                        case TextureRegistry.Play_BOTTON_TextureID:
+                            sprite.TextureBounds.x = 34 * btnState;
+                            break;
+                        case TextureRegistry.settings_Button_TextureID:
+                            sprite.TextureBounds.x = 73 * btnState;
+                            break;
+                        default:
+                            break;
+                    }
                  
                 }
             }
@@ -94,14 +104,14 @@ namespace Greed.Game.Screens.Menus
 
         private void DoSpriteSetup()
         {
-            StartGameButton.SetTextureBounds(new Raylib_cs.Rectangle(0, 0, 34, 10));
+            StartGameButton.SetTextureBounds(new Raylib_cs.Rectangle(0, 0, 34, 12));
             StartGameButton.SetHitBox(new Raylib_cs.Rectangle(0, 0,(width/4) * 3, (width/4)));
             StartGameButton.SetPosition(new Vector2(x+12, y+12));
             StartGameButton.setButtonType(Button.Play);
             // StartGameButton.SetTextureID();
             MenuCast.AddActor("play", StartGameButton);
             
-            settingsButton.SetTextureBounds(new Raylib_cs.Rectangle(0, 0, 34, 10));
+            settingsButton.SetTextureBounds(new Raylib_cs.Rectangle(0, 0, 73, 12));
             settingsButton.SetHitBox(new Raylib_cs.Rectangle(0, 0, (width/4) * 3, (width/4)));
             settingsButton.SetPosition(new Vector2(x+12, y+200));
             settingsButton.setButtonType(Button.settings);
