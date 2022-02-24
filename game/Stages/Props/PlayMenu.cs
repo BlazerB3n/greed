@@ -14,7 +14,8 @@ namespace Greed.Game.Screens.Menus
         Actor window = new Sprite(2, -1);
         int x;
         int y;
-
+        int width;
+        int height;
         InputService inputService = null;
 
         
@@ -28,13 +29,15 @@ namespace Greed.Game.Screens.Menus
             Sprite settingsButton = new Sprite(1, TextureRegistry.BOTTON_TextureID);
 
         Button btnAction = Button.NONE;
-        public PlayMenu(int x, int y, InputService input)
+        public PlayMenu(int x, int y, int width, int height, InputService input)
         {
             this.x = x;
             this.y = y;
             inputService = input;
+            this.height = height;
+            this.width = width;
             
-            window.SetHitBox(new Raylib_cs.Rectangle(x,y, 256,256));
+            window.SetHitBox(new Raylib_cs.Rectangle(x,y, width, width));
             window.SetColor(new Color(20 ,14, 124, 255));
             MenuCast.AddActor("backgrond", window);
             DoSpriteSetup();
@@ -92,14 +95,14 @@ namespace Greed.Game.Screens.Menus
         private void DoSpriteSetup()
         {
             StartGameButton.SetTextureBounds(new Raylib_cs.Rectangle(0, 0, 34, 10));
-            StartGameButton.SetHitBox(new Raylib_cs.Rectangle(0, 0, 306, 90));
+            StartGameButton.SetHitBox(new Raylib_cs.Rectangle(0, 0,(width/4) * 3, (width/4)));
             StartGameButton.SetPosition(new Vector2(x+12, y+12));
             StartGameButton.setButtonType(Button.Play);
             // StartGameButton.SetTextureID();
             MenuCast.AddActor("play", StartGameButton);
             
             settingsButton.SetTextureBounds(new Raylib_cs.Rectangle(0, 0, 34, 10));
-            settingsButton.SetHitBox(new Raylib_cs.Rectangle(0, 0, 200, 90));
+            settingsButton.SetHitBox(new Raylib_cs.Rectangle(0, 0, (width/4) * 3, (width/4)));
             settingsButton.SetPosition(new Vector2(x+12, y+200));
             settingsButton.setButtonType(Button.settings);
             

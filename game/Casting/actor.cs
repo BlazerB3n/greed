@@ -22,9 +22,9 @@ namespace Greed.Game.Casting
         /// the type of actor
         // private static int actorType; 
         
+        public int score;
         private int ID;
 
-        private int Score = 0;
         
 
         public Actor(int ID)
@@ -108,8 +108,8 @@ namespace Greed.Game.Casting
         /// <param name="maxY">The maximum y value.</param>
         public void MoveNext(int maxX, int maxY)
         {
-            int x = (int) ((HitBox.x + velocity.X) + maxX) % maxX;
-            int y = (int) ((HitBox.y + velocity.Y) + maxY) % maxY;
+            float x = ((HitBox.x + velocity.X) + maxX) % maxX;
+            float y = ((HitBox.y + velocity.Y) + maxY) % maxY;
             HitBox = new Raylib_cs.Rectangle(x, y, HitBox.width, HitBox.height);
         }
         

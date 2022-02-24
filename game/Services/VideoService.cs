@@ -55,7 +55,7 @@ namespace Greed.Game.Services
             Raylib.ClearBackground(Raylib_cs.Color.WHITE);
             if (debug)
             {
-                // DrawGrid();
+                DrawGrid();
             }
 
         }
@@ -147,7 +147,7 @@ namespace Greed.Game.Services
 
             Texture2D texture = textures[id];
 
-            Raylib.DrawTexturePro(texture, sprite.GetTextureBounds(), hitBox, new Vector2(0,0) , 0 , Color.WHITE);
+            Raylib.DrawTexturePro(texture, sprite.GetTextureBounds(), hitBox, new Vector2(0,0) , 0 , color);
             
             // Raylib.DrawTextureRec(texture, sprite.GetRectangle(), new System.Numerics.Vector2( x, y), color);
             
@@ -165,5 +165,19 @@ namespace Greed.Game.Services
             Raylib.DrawText(banner.GetMessage(), x,y,banner.FontSize, banner.GetColor());
         }
         
+        /// <summary>
+        /// Draws a grid on the screen.
+        /// </summary>
+        private void DrawGrid()
+        {
+            for (int x = 0; x < SYSTEM_SETTINGS.MAX_X; x += SYSTEM_SETTINGS.CELL_SIZE)
+            {
+                Raylib.DrawLine(x, 0, x, SYSTEM_SETTINGS.MAX_Y, Raylib_cs.Color.GRAY);
+            }
+            for (int y = 0; y < SYSTEM_SETTINGS.MAX_Y; y += SYSTEM_SETTINGS.CELL_SIZE)
+            {
+                Raylib.DrawLine(0, y, SYSTEM_SETTINGS.MAX_X, y, Raylib_cs.Color.GRAY);
+            }
+        } 
     }
 }

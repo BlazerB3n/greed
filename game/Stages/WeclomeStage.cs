@@ -36,7 +36,7 @@ namespace Greed.Game.Screens
         public void GetInputs()
         {
             Actor robot = cast.GetFirstActor("robot");
-
+            
             robot.SetVelocity(inputService.Scale(SYSTEM_SETTINGS.CELL_SIZE, new Vector2(1, 0)));
            
 
@@ -125,7 +125,7 @@ namespace Greed.Game.Screens
 
             Sprite gem = new Sprite(1, TextureRegistry.ICONS_TextureID);
 
-            gem.SetHitBox(new Rectangle(400, 0, 24, 24));
+            gem.SetHitBox(new Rectangle(0, 0, 24, 24));
             gem.SetTextureBounds(new Rectangle(12*24,1*24, 24,24));
             cast.AddActor("gem", gem);
            

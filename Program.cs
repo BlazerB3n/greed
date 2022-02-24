@@ -10,9 +10,9 @@ namespace Greed
     public struct SYSTEM_SETTINGS
     {
     public static int FRAME_RATE = 12;
-    public static int MAX_X = 960;
-    public static int MAX_Y = 624;
-    public static int CELL_SIZE = 24;
+    public static int MAX_X = 1280;
+    public static int MAX_Y = 720;
+    public static int CELL_SIZE = 64;
     public static int FONT_SIZE = 24;
     public static int COLS = 40;
     public static int ROWS = 26;
@@ -42,7 +42,7 @@ namespace Greed
 
             InputService inputService = new InputService();
             VideoService videoService 
-                = new VideoService(false, TexturesList);
+                = new VideoService(true, TexturesList);
 
             Director director = new Director(inputService, videoService);
             

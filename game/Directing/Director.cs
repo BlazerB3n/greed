@@ -79,7 +79,7 @@ namespace Greed.Game.Directing
         {
             //Dictionary<string, MenuService> MenuList = new Dictionary<string, MenuService>();
             List<IMenu> MenuList = new List<IMenu>();
-            PlayMenu main = new PlayMenu(200, 200, inputService);
+            PlayMenu main = new PlayMenu((SYSTEM_SETTINGS.MAX_X/4), (SYSTEM_SETTINGS.MAX_Y/4), (SYSTEM_SETTINGS.MAX_X/4) , (SYSTEM_SETTINGS.MAX_Y/4), inputService);
 
             MenuList.Add(main);
 
