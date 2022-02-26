@@ -21,11 +21,11 @@ namespace Greed.Game.Screens
 
         int menuIndex = 0;
 
-        public TitleStage(InputService inputService, VideoService videoService, List<IMenu> GUI)
+        public TitleStage(InputService inputService, VideoService videoService)
         {
             this.inputService = inputService;
             this.videoService = videoService;
-            menu = GUI;
+            menu = SetupMenus();
             cast = SetupCast();
         }
         
@@ -57,19 +57,31 @@ namespace Greed.Game.Screens
             int maxY = SYSTEM_SETTINGS.MAX_Y;
             robot.MoveNext(maxX, maxY);
 
-            switch (menu[menuIndex].isButtonPressed())
+            switch (menu[menuIndex].GetButtonPressed())
             {
-                case Button.Play:
+                case ButtonType.PLAY:
                     stage = Stages.GAME;
                     break;
-                case Button.settings:
+                case ButtonType.SETTINGS:
                     menuIndex = 1;
+                    break;
+                case ButtonType.PAUSE:
+                    menuIndex = 3;
+                    break;
+                case ButtonType.PREVEUS:
+                    menuIndex = 0;
+                    break;
+                case ButtonType.RULES:
+                    menuIndex = 2;
+                    break;
+                case ButtonType.NONE:
                     break;
                 default:
                     stage = Stages.TITLE;
                     break;
 
             }
+
 
             return stage;
         }
@@ -98,7 +110,7 @@ namespace Greed.Game.Screens
             Cast cast = new Cast();
 
             // create the banner with ID -1;
-            Banner banner = new Banner(-1);
+            Banner banner = new Banner();
             banner.SetMessage("WELCOME TO GREED");
             banner.FontSize = 30;
             // banner.SetFont(30);
@@ -137,5 +149,20 @@ namespace Greed.Game.Screens
 
             return cast;
         }
+
+        private List<IMenu> SetupMenus()
+        {
+            List<IMenu> MenuList = new List<IMenu>();
+            PlayMenu main = new PlayMenu((SYSTEM_SETTINGS.MAX_X/4), (SYSTEM_SETTINGS.MAX_Y/4), (SYSTEM_SETTINGS.MAX_X/4) , (SYSTEM_SETTINGS.MAX_Y/8) * 3, inputService);
+
+            SettingsMenu settings = new SettingsMenu((SYSTEM_SETTINGS.MAX_X/8), (SYSTEM_SETTINGS.MAX_Y/8), (SYSTEM_SETTINGS.MAX_X/2), (SYSTEM_SETTINGS.MAX_Y/2) , inputService);
+            RulesMenu rules = new RulesMenu((SYSTEM_SETTINGS.MAX_X/8), (SYSTEM_SETTINGS.MAX_Y/8), (SYSTEM_SETTINGS.MAX_X/2), (SYSTEM_SETTINGS.MAX_Y/2) , inputService);
+           
+            MenuList.Add(main);
+            MenuList.Add(settings);
+            MenuList.Add(rules);
+
+            return MenuList;
+        }  
     }
 }

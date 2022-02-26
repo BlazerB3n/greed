@@ -24,12 +24,14 @@ namespace Greed.Game.Directing
         Button,
         Box
     }
-    public enum Button
+    public enum ButtonType
     {
         NONE,
-        Play,
-        pause,
-        settings,
+        PLAY,
+        PAUSE,
+        SETTINGS,
+        PREVEUS,
+        RULES,
         END
     }
 
@@ -39,7 +41,7 @@ namespace Greed.Game.Directing
         public static string TEXTURE_PATH_icons = "Data/Textures/icons_vx.png";
 
         public const int Play_BOTTON_TextureID = 1;
-        public static string TEXTURE_PATH_BUTTONS = "Data/Textures/Button_play_2.0.png";
+        public static string TEXTURE_PATH_BUTTON_play = "Data/Textures/Button_play_2.0.png";
 
 
         public const int PLAYER_TextureID = 2;
@@ -48,5 +50,9 @@ namespace Greed.Game.Directing
 
         public const int settings_Button_TextureID = 3;
         public static string TEXTURE_PATH_settings = "Data/Textures/Button_Settings.png";
+
+
+        public const int BOTTON_TextureID = 4;
+        public static string TEXTURE_PATH_BUTTON = "Data/Textures/Button.png";
     }
 }

@@ -22,8 +22,6 @@ namespace Greed.Game.Directing
         // Dictionary<string, MenuService> menus = null;
         List<IMenu> menus = null;
 
-    // StartStage startStage = null;
-    // TitleStage titleStage = null;
         /// <summary>
         /// Constructs a new instance of Director using the given KeyboardService and VideoService.
         /// </summary>
@@ -34,16 +32,14 @@ namespace Greed.Game.Directing
             this.inputService = inputService;
             this.videoService = videoService;
 
-            menus = SetupMenus();
-            
-            SetupStages(inputService, videoService, menus);
-
         }
         public void GameLoop()
         {
             Stages TMP = Stages.TITLE;
 
             videoService.OpenWindow();
+            
+            SetupStages(inputService, videoService);
 
             while (videoService.IsWindowOpen())
             {
@@ -62,28 +58,17 @@ namespace Greed.Game.Directing
         }
 
 
-        private void SetupStages(InputService inputService, VideoService videoService, 
-                                        List<IMenu> menu)
+        private void SetupStages(InputService inputService, VideoService videoService 
+                                        )
         {
             // GameStage gameStage = new GameStage(keyboardService, videoService);
             // TitleStage titleStage = new TitleStage(keyboardService, videoService, menu);
-            TitleStage welcomeStage = new TitleStage(inputService, videoService, menu);
-            GameStage gameStage = new GameStage(inputService, videoService, menu);
+            TitleStage welcomeStage = new TitleStage(inputService, videoService);
+            GameStage gameStage = new GameStage(inputService, videoService);
             
             stagelist.Add(Stages.TITLE, welcomeStage);
             stagelist.Add(Stages.GAME, gameStage);
             // stagelist.Add(GAME, gameStage);
-        }
-
-        private List<IMenu> SetupMenus()
-        {
-            //Dictionary<string, MenuService> MenuList = new Dictionary<string, MenuService>();
-            List<IMenu> MenuList = new List<IMenu>();
-            PlayMenu main = new PlayMenu((SYSTEM_SETTINGS.MAX_X/4), (SYSTEM_SETTINGS.MAX_Y/4), (SYSTEM_SETTINGS.MAX_X/4) , (SYSTEM_SETTINGS.MAX_Y/4), inputService);
-
-            MenuList.Add(main);
-
-            return MenuList;
         }
     }
 }

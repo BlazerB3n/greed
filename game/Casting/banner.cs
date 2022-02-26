@@ -9,11 +9,18 @@ namespace Greed.Game.Casting
 
         public int FontSize = SYSTEM_SETTINGS.FONT_SIZE;
         
-        public Banner(int ID) : base(ID)
+        /// <summary>
+        /// Constructs a new instance of Banner
+        /// </summary>
+        public Banner() : base(-1)
         {
 
         }
 
+        /// <summary>
+        /// Gets the Banner's text.
+        /// </summary>
+        /// <returns>The text.</returns>
         public string GetMessage()
         {
             return message;
@@ -21,12 +28,20 @@ namespace Greed.Game.Casting
 
         
 
+        /// <summary>
+        /// sets the banner's color.
+        /// </summary>
+        /// <param name="Message">The new Message.</param>
         public void SetMessage(string Message)
         {
             message = Message;
 
         }
 
+        /// <summary>
+        /// Sets the banner's font size.
+        /// </summary>
+        /// <param name="FontSize">The new Font Size.</param>
         public void SetFont(int FontSize)
         {
             this.FontSize = FontSize;

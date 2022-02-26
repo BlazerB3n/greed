@@ -7,7 +7,7 @@ namespace Greed.Game.Screens.Menus
     public interface IMenu
     {
         List<Actor> GetCast();
-        Button isButtonPressed();
+        ButtonType GetButtonPressed();
 
 
     }

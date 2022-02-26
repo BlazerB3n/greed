@@ -27,6 +27,7 @@ namespace Greed.Game.Services
         {
             Raylib.InitWindow(SYSTEM_SETTINGS.MAX_X, SYSTEM_SETTINGS.MAX_Y, SYSTEM_SETTINGS.CAPTION);
             Raylib.SetTargetFPS(SYSTEM_SETTINGS.FRAME_RATE);
+            Raylib.SetWindowState(ConfigFlags.FLAG_VSYNC_HINT);
             
             foreach (TextureService item in TextureList)
             {

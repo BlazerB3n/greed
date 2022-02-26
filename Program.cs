@@ -28,11 +28,12 @@ namespace Greed
     {
         static void Main(string[] args)
         {
+
             // start the game
 
             TextureService Icons = new TextureService(TextureRegistry.TEXTURE_PATH_icons, TextureRegistry.ICONS_TextureID);
             TextureService Battler = new TextureService(TextureRegistry.TEXTURE_PATH_Battler, TextureRegistry.PLAYER_TextureID);
-            TextureService Buttons = new TextureService(TextureRegistry.TEXTURE_PATH_BUTTONS, TextureRegistry.Play_BOTTON_TextureID);
+            TextureService Buttons = new TextureService(TextureRegistry.TEXTURE_PATH_BUTTON, TextureRegistry.BOTTON_TextureID);
             TextureService settings = new TextureService(TextureRegistry.TEXTURE_PATH_settings, TextureRegistry.settings_Button_TextureID);
 
 
@@ -44,7 +45,7 @@ namespace Greed
 
             InputService inputService = new InputService();
             VideoService videoService 
-                = new VideoService(true, TexturesList);
+                = new VideoService(false, TexturesList);
 
             Director director = new Director(inputService, videoService);
             

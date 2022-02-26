@@ -4,10 +4,11 @@ using Greed.Game.Directing;
 using System.Collections.Generic;
 using System.Numerics;
 using Raylib_cs;
+using System;
 
 namespace Greed.Game.Screens.Menus
 {
-    public class PlayMenu : IMenu
+    public class RulesMenu : IMenu
     {
         Cast  MenuCast = new Cast();
 
@@ -25,44 +26,42 @@ namespace Greed.Game.Screens.Menus
         int btnState = 0;
 
         bool button = false;
-        Vector2 touchPoint;
+        Banner Title = new Banner();
+        Button prev = null;
 
-        Button settings = null;
-        Button Play = null;
-        Button rules = null;
-
-        public PlayMenu(int x, int y, int width, int height, InputService input)
+         public RulesMenu(int x, int y, int width, int height, InputService input)
         {
             this.x = x;
             this.y = y;
             inputService = input;
             this.height = height;
             this.width = width;
+            Title.SetMessage("Rules: ");
+            Title.FontSize = 50;
+            Title.SetPosition(new Vector2(x + 10, y + 10));
+            Title.SetColor(new Color(0,0,0, 255));
 
-            Play = new Button(x + (width/16), y + (height/16),"PLAY", 34);
-            settings = new Button(x + (width/16), y + (height/16)*5, "SETTINGS", 34 );
-            rules = new Button(x + (width/8), y + (height/8)*6, "RULES", 24);
+            prev = new Button(x + (width/16), y + (height/16) + 50,"Return", 34);
 
             window.SetHitBox(new Raylib_cs.Rectangle(x,y, width, height));
-            window.SetColor(new Color(20 ,14, 124, 255));
+            window.SetColor(new Color(20, 150, 124, 255));
             MenuCast.AddActor("backgrond", window);
-            DoSpriteSetup();
+            
+            DoButtonSetup();
+
+            MenuCast.AddActor("title", Title);
         }
 
         public void GetInputs()
         {
             mousePoint = Raylib_cs.Raylib.GetMousePosition();
+
         }
         public void DoUpdates()
         {
             buttonPressed = ButtonType.NONE;
 
-            if(settings.isButtonPressed(mousePoint)) buttonPressed = ButtonType.SETTINGS;
-
-            
-            if(Play.isButtonPressed(mousePoint)) buttonPressed = ButtonType.PLAY;
-
-            if(rules.isButtonPressed(mousePoint)) buttonPressed = ButtonType.RULES;
+            if(prev.isButtonPressed(mousePoint)) buttonPressed = ButtonType.PREVEUS;
         }
         public void DoOutputs()
         {
@@ -84,14 +83,14 @@ namespace Greed.Game.Screens.Menus
             return buttonPressed;
         }
 
-        private void DoSpriteSetup()
+        private void DoButtonSetup()
         {
-            MenuCast.AddActorList("button", settings.GetCast());
-            MenuCast.AddActorList("play", Play.GetCast());
-            MenuCast.AddActorList("rules", rules.GetCast());
-
+            MenuCast.AddActorList("return", prev.GetCast());
 
         }
+
+
+
 
     }
 }

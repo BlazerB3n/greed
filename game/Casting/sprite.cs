@@ -15,7 +15,6 @@ namespace Greed.Game.Casting
         private TextureType textureType;
         int TextureID;
 
-        Button button;
         public Sprite(int ID, int TextureID) : base(ID)
         {
             this.TextureID = TextureID;
@@ -41,15 +40,6 @@ namespace Greed.Game.Casting
         public void SetTextureID(int TextureID)
         {
             this.TextureID  = TextureID;
-        }
-
-        public void setButtonType(Button button)
-        {
-            this.button = button;
-        }
-        public Button GetButtonType()
-        {
-            return button;
         }
         // public TextureType GetTextureType()
         // {

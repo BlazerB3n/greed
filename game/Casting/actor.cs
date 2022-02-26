@@ -27,6 +27,10 @@ namespace Greed.Game.Casting
 
         
 
+        /// <summary>
+        /// Constructs a new instance of Actor using the given ID.
+        /// </summary>
+        /// <param name="ID">The given actor type.</param>
         public Actor(int ID)
         {
             this.ID = ID;
@@ -49,23 +53,6 @@ namespace Greed.Game.Casting
             this.ID = id;
         }
 
-        // /// <summary>
-        // /// Gets the Actor's ID value.
-        // /// </summary>
-        // /// <returns>The ID value.</returns>
-        // public int GetActorType()
-        // {
-        //     return actorType;
-        // }
-
-        // /// <summary>
-        // /// sets the Actor's type value.
-        // /// </summary>
-        // public void SetActorType(ActorType type)
-        // {
-        //     actorType = (int) type;
-        // }
-
         /// <summary>
         /// Gets the Actor's Position.
         /// </summary>
@@ -84,12 +71,17 @@ namespace Greed.Game.Casting
             return HitBox;
         }
 
+        /// <summary>
+        /// Gets the Actor's possiton as vector2
+        /// </summary>
+        /// <returns>The vector2 positoin in the window.</returns>
         public Vector2 GetPossition()
         {
             float x = HitBox.x;
             float y = HitBox.y;
             return new Vector2(x, y);
         }
+
         /// <summary>
         /// Gets the Actor's Volocity.
         /// </summary>
