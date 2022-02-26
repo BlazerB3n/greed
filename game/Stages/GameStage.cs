@@ -191,7 +191,7 @@ int frame = 0;
         /// </summary>
         public List<Actor> DoOutputs()
         {
-            
+
             List<Actor> actors = cast.GetAllActors();
             // videoService.ClearBuffer();
             Banner banner = (Banner) cast.GetFirstActor("banner");
